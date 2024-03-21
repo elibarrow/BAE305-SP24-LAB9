@@ -9,7 +9,8 @@ March 22, 2024
 
 
 ### Lab Objectives: ###
-
+1. Download the PID and become familiar with it
+2. Use the PID to contorl the robot distance from a vertical surface
 
 ## Lab Assignment Specific Items ##
 
@@ -79,13 +80,45 @@ Next open the robot sketch and modify it according to the following steps:
 
   * Code Display 4: This code should be inserted in the loop function in your IDE file and it will display the values in the serial communications.
 
-### Part 2 - Develop the App ###
+### Part 2 - Keep your distance ###
+
+In this section we implemented the PID controller into the robot movement so that given an object in front, the robot will move forward or backwards to maintain the desired distance.
+
+1. We wrote a function to tell the robot to move back or forward depending on the measured distance. The PID library will return an output value from 0 to 255. We implement a function that obtains this output and moves forward or backward and with a fast or slow speed.
+   ```c++
+
+    duration = pulseIn(echoPin, HIGH);
+    distance = (duration*.0343)/2;
+    MEAS = distance;
+    myPID.Compute();
+    motorSpeed = map(OUT, 0, 255, 150, 255)
+
+   
+    if(true)
+      {
+          //motorSpeed = OUT;
 
 
+          if (MEAS > setpoint)
+          {
+          botDirection = "f";
+          }
+          else 
+          {
+          botDirection = "b";
+       }
 
+   ```
+ * Code Display 5: This code will read the value of "MEAS" and if it is greater than or less that the "setpoint" it will accuratley move the robot forwards or backwards.
+
+After demonstrating this to Dr. Jarro we then modified Kp, Ki and Kd to test our system even further to make it more accurate.
+
+### Part 3 - Wall Follower ###
+
+We did not do this in lab.
 
 ## Results ##
 
-## Discussion Questions ##
+
 
 ## Conclusion of Lab 8 ##
