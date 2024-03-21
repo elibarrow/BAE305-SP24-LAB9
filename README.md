@@ -63,7 +63,7 @@ Next open the robot sketch and modify it according to the following steps:
 * Code Display 2: This code should be inserted in the setup function in your IDE file
     
 
- 6. Within the loop function run the PID after obtaining the distance. This line will compute the output of the PID according to the tuning and inputs, and write the output to its pointer.
+ 5. Within the loop function run the PID after obtaining the distance. This line will compute the output of the PID according to the tuning and inputs, and write the output to its pointer.
    ```c++
 
     myPID.Compute();
@@ -72,7 +72,7 @@ Next open the robot sketch and modify it according to the following steps:
 * Code Display 3: This code should be inserted in the loop function in your IDE file
 
 
-  7.  Wrtie the setpoint, measurement, and output values to the serial port to verify the operation.
+  6.  Wrtie the setpoint, measurement, and output values to the serial port to verify the operation.
   ```c++
   Serial.print(MEAS);
   Serial.print(",");
