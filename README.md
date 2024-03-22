@@ -4,13 +4,16 @@ Eli Barrow & Isaac Stevens
 March 22, 2024
 
 ## Summary of Lab ##
+The main goal of this lab was to learn how to implement PID control in an Arduino circuit to allow the robot to maintain a set distance from a wall. When the wall is moved farther away, the robot will move forward to maintain the distance and vice versa. To achieve this goal, we created a program to allow the program to sense the distance with an ultrasonic sensor and for the robot to automatically adjust the robot's distance. The robot is also the same robot we created in Lab 6 of BAE 310.
 
+
+For Part 1 of the lab, we used the same robot we assembled in Lab 6 and verified our robot could be moved forward, backward, left, and right according to commands sent via serial communications. We also found the minimum user input or speed that would move the car which was 40 input units. For Part 2 of the lab, we logged into the App Inventor 2 Web-based tool and created an app that would connect an Android phone to the Arduino through a wired connection by pressing a button. Once connected to the Arduino, there were 4 different buttons for 4 directions (forward, backward, left, right) as well as a slider to adjust the speed of the robot. For Part 3 of the lab, we included the HC-05 Bluetooth UART Module into the circuit to allow for Bluetooth connections. By modifying the code that was being uploaded into the Arduino through IDE and adding a Bluetooth connection section in our App Inventor 2 app, we can allow an Android phone to connect wirelessly to the Arduino through Bluetooth. To connect through Bluetooth, a button needs to be pressed on the app which will ask the Android phone for permission to use Bluetooth and what device they would like to connect to. Once the Android phone is connected wirelessly to the Arduino, both direction and speed can be controlled in the same way as Part 2.
 
 
 
 ### Lab Objectives: ###
 1. Download the PID and become familiar with it
-2. Use the PID to contorl the robot distance from a vertical surface
+2. Use the PID to control the robot distance from a vertical surface
 
 ## Lab Assignment Specific Items ##
 
@@ -31,13 +34,13 @@ March 22, 2024
 This lab picks up and uses the robot that had been built in the previous lab. Any circuits or schematics can be found in the corresponding repository on my Github account.
 
 ### Part 1 - PID USE ###
-First open the Arduino IDE and install the PID_V2 Library. Open the Library Manager (Tools>ManageLibraries) and search for PID_V2 and install the latest library by BRett Beauregard.   
-Next open the robot sketch and modify it according to the following steps:
+First, open the Arduino IDE and install the PID_V2 Library. Open the Library Manager (Tools>ManageLibraries) search for PID_V2 and install the latest library by Brett Beauregard.   
+Next, open the robot sketch and modify it according to the following steps:
 1. Include the library (#include<PID_V2.h>)
-2. Define the setpoint, measurement, output, Kp, Ki and Kd variables as type double.
+2. Define the setpoint, measurement, output, Kp, Ki, and Kd variables as type double.
 3. Before the setup function create the PID instance:
    PID myPID(&MEAS, &OUT, &setpoint, Kp, Ki, Kd, DIRECT);
-   NOTE: The measurementm output, and setpoint have an (&) before because these variables are pointers.
+   NOTE: The measurement output and setpoint have an (&) before because these variables are pointers.
    ```c++
     #include <PID_v2.h>
    
@@ -52,7 +55,7 @@ Next open the robot sketch and modify it according to the following steps:
    ```
    * Code Display 1: This code should be inserted before the setup function in your IDE file.   
 
-4. Within the setup function intialize the PID as follows:
+4. Within the setup function initialize the PID as follows:
    myPID.SetTunings(Kp, Ki, Kd);
    myPID.SetMode(AUTOMATIC);
 
@@ -160,10 +163,10 @@ const int turnTime = 8;        //this is the number of milliseconds that it take
                                //it is set so that if you tell the robot to turn right 90 units, the robot turns about 90 degrees
 
                                //Note: these numbers will vary a little bit based on how you mount your motors, the friction of the
-                               //surface that your driving on, and fluctuations in the power to the motors.
+                               //surface that you're driving on, and fluctuations in the power to the motors.
                                //You can change the driveTime and turnTime to make them more accurate
 
-String botDirection;           //the direction that the robot will drive in (this change which direction the two motors spin in)
+String botDirection;           //the direction that the robot will drive in (this changes which direction the two motors spin in)
 String speed;               //the speed to travel in each direction
 int motorSpeed = 0;
 int stop = 0;
@@ -187,7 +190,7 @@ PID myPID(&MEAS, &OUT, &setpoint, Kp, Ki, Kd, DIRECT);
 /********************************************************************************/
 void setup()
 {
-  pinMode(switchPin, INPUT_PULLUP);   //set this as a pullup to sense whether the switch is flipped
+  pinMode(switchPin, INPUT_PULLUP);   //set this as a pull-up to sense whether the switch is flipped
 
   //set the motor control pins as outputs
   pinMode(AIN1, OUTPUT);
