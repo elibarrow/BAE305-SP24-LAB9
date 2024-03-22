@@ -4,11 +4,10 @@ Eli Barrow & Isaac Stevens
 March 22, 2024
 
 ## Summary of Lab ##
+
 The main goal of this lab was to learn how to implement PID control in an Arduino circuit to allow the robot to maintain a set distance from a wall. When the wall is moved farther away, the robot will move forward to maintain the distance and vice versa. To achieve this goal, we created a program to allow the program to sense the distance with an ultrasonic sensor and for the robot to automatically adjust the robot's distance. The robot is also the same robot we created in Lab 6 of BAE 310.
 
-
-For Part 1 of the lab, we used the same robot we assembled in Lab 6 and verified our robot could be moved forward, backward, left, and right according to commands sent via serial communications. We also found the minimum user input or speed that would move the car which was 40 input units. For Part 2 of the lab, we logged into the App Inventor 2 Web-based tool and created an app that would connect an Android phone to the Arduino through a wired connection by pressing a button. Once connected to the Arduino, there were 4 different buttons for 4 directions (forward, backward, left, right) as well as a slider to adjust the speed of the robot. For Part 3 of the lab, we included the HC-05 Bluetooth UART Module into the circuit to allow for Bluetooth connections. By modifying the code that was being uploaded into the Arduino through IDE and adding a Bluetooth connection section in our App Inventor 2 app, we can allow an Android phone to connect wirelessly to the Arduino through Bluetooth. To connect through Bluetooth, a button needs to be pressed on the app which will ask the Android phone for permission to use Bluetooth and what device they would like to connect to. Once the Android phone is connected wirelessly to the Arduino, both direction and speed can be controlled in the same way as Part 2.
-
+For Part 1 of the lab, we used the same robot we assembled in Lab 6. Next, we opened Arduino IDE installed the PID_V2 Library, and included it in the code. Modify the code to define the setpoint, measurement, and output, and initialize the PID control and loop function. Lastly write the setpoint, measurement, and output values to the serial port to verify the operation. For Part 2 of the lab, we will implement the PID controller into the robot movement so the robot will maintain the desired distance from an object. Write a function to indicate the robot to move back or forward depending on the measured distance and tune the system by modifying Kp, Ki, and Kd. We did not complete part 3 of the lab due to it being to difficult.
 
 
 ### Lab Objectives: ###
