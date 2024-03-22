@@ -87,7 +87,7 @@ Next, open the robot sketch and modify it according to the following steps:
 
 ### Part 2 - Keep your distance ###
 
-In this section we implemented the PID controller into the robot movement so that given an object in front, the robot will move forward or backwards to maintain the desired distance.
+In this section, we implemented the PID controller into the robot movement so that given an object in front, the robot will move forward or backward to maintain the desired distance.
 
 1. We wrote a function to tell the robot to move back or forward depending on the measured distance. The PID library will return an output value from 0 to 255. We implement a function that obtains this output and moves forward or backward and with a fast or slow speed.
    ```c++
@@ -114,9 +114,9 @@ In this section we implemented the PID controller into the robot movement so tha
        }
 
    ```
- * Code Display 5: This code will read the value of "MEAS" and if it is greater than or less that the "setpoint" it will accuratley move the robot forwards or backwards.
+ * Code Display 5: This code will read the value of "MEAS" and if it is greater than or less than the "setpoint" it will accurately move the robot forwards or backward.
 
-After demonstrating this to Dr. Jarro we then modified Kp, Ki and Kd to test our system even further to make it more accurate.
+After demonstrating this to Dr. Jarro we then modified Kp, Ki, and Kd to test our system even further to make it more accurate.
 
 ### Part 3 - Wall Follower ###
 
@@ -124,6 +124,13 @@ We did not do this in lab.
 
 ## Results ##
 
+**Part 1**
+
+Successfully assembled the robot and verified the robot could be moved forward, backward, left, and right according to commands sent via serial communications.
+
+**Part 2**
+
+Created an app through App Inventor 2 which allowed for the robot to be controlled by an Android phone through a wired connection. This app allowed the user to connect and choose a direction (forward, backward, left, and right) for the robot to drive while also being able to adjust the speed with a slider.
 
 
 ## Conclusion of Lab 8 ##
